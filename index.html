@@ -139,17 +139,46 @@
 
   /* ── GRID ── */
   .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1px; background: var(--gray); max-width: 1100px; margin: 0 auto; border-top: 1px solid var(--gray); border-bottom: 1px solid var(--gray); }
-  .product-card { background: var(--cream); padding: 24px 22px; display: flex; flex-direction: column; gap: 5px; transition: background .15s; opacity: 0; animation: fadeUp .3s forwards; }
-  .product-image-wrap {
-    height: 190px; background: var(--white); display:flex; align-items:center;
-    justify-content:center; margin: -4px -2px 12px; overflow:hidden;
+  .product-card {
+    background: var(--cream);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    opacity: 0;
+    animation: fadeUp .3s forwards;
+    transition: background .2s, transform .2s, box-shadow .2s;
+    position: relative;
+    z-index: 0;
   }
-  .product-image { width:100%; height:100%; object-fit:contain; padding:10px; }
+  .product-image-wrap {
+    height: 210px;
+    background: var(--white);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin: -4px -2px 12px;
+    overflow:hidden;
+  }
+  .product-image {
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:6px;
+    transform:scale(1.04);
+    transition:transform .25s ease;
+  }
   .product-promo {
     margin-top:8px; font-size:10px; line-height:1.35; font-weight:800;
     color:var(--blue); text-transform:uppercase; letter-spacing:.7px;
   }
-  .product-card:hover { background: var(--white); }
+  .product-card:hover {
+    background: var(--white);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(17,17,17,.08);
+    z-index: 2;
+  }
+  .product-card:hover .product-image { transform: scale(1.09); }
   @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 
   .product-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
@@ -160,7 +189,11 @@
   .product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--gray); }
   .product-price { font-size: 22px; font-weight: 900; color: var(--black); letter-spacing: -0.5px; }
   .add-btn { width: 34px; height: 34px; background: var(--black); color: var(--white); border: none; font-size: 20px; font-weight: 300; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s, transform .1s; line-height: 1; }
-  .add-btn:hover { background: var(--blue); transform: scale(1.08); }
+  .add-btn:hover {
+    background: var(--blue);
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 5px 12px rgba(20,93,160,.22);
+  }
   .add-btn.added { background: var(--blue); font-size: 14px; }
 
   /* ── BAND ── */
@@ -215,7 +248,15 @@
   .whatsapp-btn:disabled { background: var(--gray); cursor: not-allowed; }
   .whatsapp-btn svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
 
-  @media (max-width: 600px) { .products-grid { grid-template-columns: 1fr 1fr; } .product-card { padding: 16px 14px; } .product-image-wrap { height:145px; } .hero { padding: 48px 20px 40px; } }
+  @media (max-width: 600px) {
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .product-card { padding: 16px 14px; }
+    .product-image-wrap { height:165px; }
+    .product-image { padding:4px; transform:scale(1.03); }
+    .product-card:hover { transform:none; box-shadow:none; }
+    .product-card:hover .product-image { transform:scale(1.03); }
+    .hero { padding: 48px 20px 40px; }
+  }
   @media (max-width: 380px) { .products-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -335,32 +376,32 @@ const catalog = {
     filters: ['Todos', 'Proteína', 'Creatina'],
     products: [
       // ── PROTEÍNAS STAR ──
-      { id:'P01', image:'images/producto-p01.webp', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Chocolate',       detail:'2 LB · Doypack · Concentrada', price:76100 },
-      { id:'P02', image:'images/producto-p02.webp', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Vainilla',        detail:'2 LB · Doypack · Concentrada', price:76100 },
-      { id:'P03', image:'images/producto-p03.webp', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Cookies',         detail:'2 LB · Doypack · Concentrada', price:76100 },
+      { id:'P01', image:'images/producto-p01.webp?v=4', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Chocolate',       detail:'2 LB · Doypack · Concentrada', price:76100 },
+      { id:'P02', image:'images/producto-p02.webp?v=4', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Vainilla',        detail:'2 LB · Doypack · Concentrada', price:76100 },
+      { id:'P03', image:'images/producto-p03.webp?v=4', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Cookies',         detail:'2 LB · Doypack · Concentrada', price:76100 },
       // ── PROTEÍNAS ENA ──
-      { id:'P04', image:'images/producto-p04.webp', cat:'Proteína', brand:'ENA',            name:'True Made Chocolate',          detail:'2.05 LB · Blend',             price:80000 },
-      { id:'P05', image:'images/producto-p05.webp', cat:'Proteína', brand:'ENA',            name:'True Made Vainilla',           detail:'2.05 LB · Blend',             price:80000 },
-      { id:'P06', image:'images/producto-p06.webp', cat:'Proteína', brand:'ENA',            name:'True Made Cookies',            detail:'2.05 LB · Blend',             price:80000 },
+      { id:'P04', image:'images/producto-p04.webp?v=4', cat:'Proteína', brand:'ENA',            name:'True Made Chocolate',          detail:'2.05 LB · Blend',             price:80000 },
+      { id:'P05', image:'images/producto-p05.webp?v=4', cat:'Proteína', brand:'ENA',            name:'True Made Vainilla',           detail:'2.05 LB · Blend',             price:80000 },
+      { id:'P06', image:'images/producto-p06.webp?v=4', cat:'Proteína', brand:'ENA',            name:'True Made Cookies',            detail:'2.05 LB · Blend',             price:80000 },
       // ── PROTEÍNAS IDN DOYPACK ──
-      { id:'P07', image:'images/producto-p07.png', cat:'Proteína', brand:'IDN',            name:'100% Whey Protein Vainilla',   detail:'2 LB · Doypack · WPC+WPH+WPI',price:69500 },
-      { id:'P08', image:'images/producto-p08.png', cat:'Proteína', brand:'IDN',            name:'100% Whey Protein Cookies',    detail:'2 LB · Doypack · WPC+WPH+WPI',price:69500 },
+      { id:'P07', image:'images/producto-p07.png?v=4', cat:'Proteína', brand:'IDN',            name:'100% Whey Protein Vainilla',   detail:'2 LB · Doypack · WPC+WPH+WPI',price:69500 },
+      { id:'P08', image:'images/producto-p08.png?v=4', cat:'Proteína', brand:'IDN',            name:'100% Whey Protein Cookies',    detail:'2 LB · Doypack · WPC+WPH+WPI',price:69500 },
       // ── PROTEÍNAS IDN POTE ──
-      { id:'P09', image:'images/producto-p09.jpg', cat:'Proteína', brand:'IDN',            name:'100% Whey Ice Cream Vainilla', detail:'2 LB · Pote · WPC+WPH+WPI',   price:76900 },
-      { id:'P10', image:'images/producto-p10.jpg', cat:'Proteína', brand:'IDN',            name:'100% Whey Chocolate',          detail:'2 LB · Pote · WPC+WPH+WPI',   price:76900 },
-      { id:'P11', image:'images/producto-p11.jpg', cat:'Proteína', brand:'IDN',            name:'100% Whey Frutilla',           detail:'2 LB · Pote · WPC+WPH+WPI',   price:76900 },
+      { id:'P09', image:'images/producto-p09.jpg?v=4', cat:'Proteína', brand:'IDN',            name:'100% Whey Ice Cream Vainilla', detail:'2 LB · Pote · WPC+WPH+WPI',   price:76900 },
+      { id:'P10', image:'images/producto-p10.jpg?v=4', cat:'Proteína', brand:'IDN',            name:'100% Whey Chocolate',          detail:'2 LB · Pote · WPC+WPH+WPI',   price:76900 },
+      { id:'P11', image:'images/producto-p11.jpg?v=4', cat:'Proteína', brand:'IDN',            name:'100% Whey Frutilla',           detail:'2 LB · Pote · WPC+WPH+WPI',   price:76900 },
       // ── CREATINAS STAR ──
-      { id:'CR01', image:'images/producto-cr01.webp',cat:'Creatina', brand:'Star Nutrition', name:'Creatina Monohidrato',         detail:'300 g · Frutos Rojos',        price:29000 },
-      { id:'CR02', image:'images/producto-cr02.webp',cat:'Creatina', brand:'Star Nutrition', name:'Creatina Monohidrato',         detail:'300 g · Neutro',              price:29000 },
+      { id:'CR01', image:'images/producto-cr01.webp?v=4',cat:'Creatina', brand:'Star Nutrition', name:'Creatina Monohidrato',         detail:'300 g · Frutos Rojos',        price:29000 },
+      { id:'CR02', image:'images/producto-cr02.webp?v=4',cat:'Creatina', brand:'Star Nutrition', name:'Creatina Monohidrato',         detail:'300 g · Neutro',              price:29000 },
       // ── CREATINAS ENA ──
-      { id:'CR03', image:'images/producto-cr03.webp',cat:'Creatina', brand:'ENA',            name:'Creatina Micronizada',         detail:'300 g · Fruit Punch',         price:32000 },
-      { id:'CR04', image:'images/producto-cr04.webp',cat:'Creatina', brand:'ENA',            name:'Creatina Micronizada',         detail:'300 g · Naranja',             price:32000 },
-      { id:'CR05', image:'images/producto-cr05.webp',cat:'Creatina', brand:'ENA',            name:'Creatina Micronizada',         detail:'300 g · Neutro',              price:32000 },
+      { id:'CR03', image:'images/producto-cr03.webp?v=4',cat:'Creatina', brand:'ENA',            name:'Creatina Micronizada',         detail:'300 g · Fruit Punch',         price:32000 },
+      { id:'CR04', image:'images/producto-cr04.webp?v=4',cat:'Creatina', brand:'ENA',            name:'Creatina Micronizada',         detail:'300 g · Naranja',             price:32000 },
+      { id:'CR05', image:'images/producto-cr05.webp?v=4',cat:'Creatina', brand:'ENA',            name:'Creatina Micronizada',         detail:'300 g · Neutro',              price:32000 },
       // ── CREATINAS IDN ──
-      { id:'CR06', image:'images/producto-cr06.png',cat:'Creatina', brand:'IDN',            name:'Creatina Monohidrato',         detail:'300 g · Neutro',              price:28300 },
-      { id:'CR07', image:'images/producto-cr07.jpg',cat:'Creatina', brand:'IDN',            name:'Creatina Monohidrato',         detail:'500 g · Neutro',              price:49000 },
+      { id:'CR06', image:'images/producto-cr06.png?v=4',cat:'Creatina', brand:'IDN',            name:'Creatina Monohidrato',         detail:'300 g · Neutro',              price:28300 },
+      { id:'CR07', image:'images/producto-cr07.jpg?v=4',cat:'Creatina', brand:'IDN',            name:'Creatina Monohidrato',         detail:'500 g · Neutro',              price:49000 },
       // ── CREATINA NATIER ──
-      { id:'NAT01', image:'images/producto-nat01.webp',cat:'Creatina',brand:'Natier',         name:'Creatina Monohidratada',       detail:'300 g · Neutro',              price:35800 , promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT01', image:'images/producto-nat01.webp?v=4',cat:'Creatina',brand:'Natier',         name:'Creatina Monohidratada',       detail:'300 g · Neutro',              price:35800 , promo:'10% OFF en efectivo o transferencia' },
     ]
   },
 
@@ -369,19 +410,19 @@ const catalog = {
     filters: ['Todos', 'Colágeno', 'Magnesio', 'Omega 3', 'Vitaminas', 'Otros'],
     products: [
       // ── COLÁGENO ──
-      { id:'NAT02', image:'images/producto-nat02.webp',cat:'Colágeno', brand:'Natier', name:'Colágeno + Magnesio Polvo',    detail:'250 g · Polvo',          price:42500 , promo:'10% OFF en efectivo o transferencia' },
-      { id:'NAT03', image:'images/producto-nat03.webp',cat:'Colágeno', brand:'Natier', name:'Colágeno Beauty Plus',         detail:'250 g · Polvo',          price:40500 , promo:'10% OFF en efectivo o transferencia' },
-      { id:'NX01', image:'images/producto-nx01.png', cat:'Colágeno', brand:'Nutremax',name:'Collagen BD',                 detail:'Con minerales + vitaminas antioxidantes', price:29900 },
+      { id:'NAT02', image:'images/producto-nat02.webp?v=4',cat:'Colágeno', brand:'Natier', name:'Colágeno + Magnesio Polvo',    detail:'250 g · Polvo',          price:42500 , promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT03', image:'images/producto-nat03.webp?v=4',cat:'Colágeno', brand:'Natier', name:'Colágeno Beauty Plus',         detail:'250 g · Polvo',          price:40500 , promo:'10% OFF en efectivo o transferencia' },
+      { id:'NX01', image:'images/producto-nx01.png?v=4', cat:'Colágeno', brand:'Nutremax',name:'Collagen BD',                 detail:'Con minerales + vitaminas antioxidantes', price:29900 },
       // ── MAGNESIO ──
-      { id:'NAT04', image:'images/producto-nat04.webp',cat:'Magnesio', brand:'Natier', name:'Citrato de Magnesio',          detail:'150 g · Polvo concentrado',price:36400 , promo:'10% OFF en efectivo o transferencia' },
-      { id:'NAT05', image:'images/producto-nat05.webp',cat:'Magnesio', brand:'Natier', name:'Magnesio 50 caps',             detail:'50 cápsulas',             price:24300 , promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT04', image:'images/producto-nat04.webp?v=4',cat:'Magnesio', brand:'Natier', name:'Citrato de Magnesio',          detail:'150 g · Polvo concentrado',price:36400 , promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT05', image:'images/producto-nat05.webp?v=4',cat:'Magnesio', brand:'Natier', name:'Magnesio 50 caps',             detail:'50 cápsulas',             price:24300 , promo:'10% OFF en efectivo o transferencia' },
       // ── OMEGA 3 ──
-      { id:'NAT07', image:'images/producto-nat07.webp',cat:'Omega 3',  brand:'Natier', name:'Omega-3 Softgel',              detail:'60 cápsulas',             price:50500 , promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT07', image:'images/producto-nat07.webp?v=4',cat:'Omega 3',  brand:'Natier', name:'Omega-3 Softgel',              detail:'60 cápsulas',             price:50500 , promo:'10% OFF en efectivo o transferencia' },
       // ── VITAMINAS ──
-      { id:'NAT10', image:'images/producto-nat10.webp',cat:'Vitaminas',brand:'Natier', name:'Vitamina C Concentrada',       detail:'50 cápsulas',             price:25300 , promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT10', image:'images/producto-nat10.webp?v=4',cat:'Vitaminas',brand:'Natier', name:'Vitamina C Concentrada',       detail:'50 cápsulas',             price:25300 , promo:'10% OFF en efectivo o transferencia' },
       // ── OTROS ──
-      { id:'NAT08', image:'images/producto-nat08.webp',cat:'Otros',brand:'Natier', name:'Aloe Vera Jugo Natural',       detail:'500 cc · 100% natural',   price:21700 , promo:'10% OFF en efectivo o transferencia' },
-      { id:'NAT09', image:'images/producto-nat09.webp',cat:'Otros',brand:'Natier', name:'Shot Energía',                 detail:'60 cm³',                  price:6000  , promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT08', image:'images/producto-nat08.webp?v=4',cat:'Otros',brand:'Natier', name:'Aloe Vera Jugo Natural',       detail:'500 cc · 100% natural',   price:21700 , promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT09', image:'images/producto-nat09.webp?v=4',cat:'Otros',brand:'Natier', name:'Shot Energía',                 detail:'60 cm³',                  price:6000  , promo:'10% OFF en efectivo o transferencia' },
     ]
   },
 
@@ -390,20 +431,20 @@ const catalog = {
     filters: ['Todos', 'Isotónica', 'Gel energizante', 'Accesorios'],
     products: [
       // ── ISOTÓNICAS ──
-      { id:'NX02', image:'images/producto-nx02.png',cat:'Isotónica',      brand:'Nutremax', name:'Hidromax Pomelo Rosado',   detail:'Display 20 sobres',         price:20400 },
-      { id:'NX03', image:'images/producto-nx03.png',cat:'Isotónica',      brand:'Nutremax', name:'Hidromax Naranja',         detail:'Display 20 sobres',         price:20400 },
+      { id:'NX02', image:'images/producto-nx02.png?v=4',cat:'Isotónica',      brand:'Nutremax', name:'Hidromax Pomelo Rosado',   detail:'Display 20 sobres',         price:20400 },
+      { id:'NX03', image:'images/producto-nx03.png?v=4',cat:'Isotónica',      brand:'Nutremax', name:'Hidromax Naranja',         detail:'Display 20 sobres',         price:20400 },
       // ── GELES SIN CAFEÍNA ──
-      { id:'NX04', image:'images/producto-nx04.png',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel S/Cafeína',     detail:'Display 12 geles · Neutro', price:20200 },
-      { id:'NX05', image:'images/producto-nx05.png',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel S/Cafeína',     detail:'Display 12 geles · Limón',  price:20200 },
-      { id:'NX06', image:'images/producto-nx06.png',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel S/Cafeína',     detail:'Display 12 geles · Frutilla & Naranja', price:20200 },
+      { id:'NX04', image:'images/producto-nx04.png?v=4',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel S/Cafeína',     detail:'Display 12 geles · Neutro', price:20200 },
+      { id:'NX05', image:'images/producto-nx05.png?v=4',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel S/Cafeína',     detail:'Display 12 geles · Limón',  price:20200 },
+      { id:'NX06', image:'images/producto-nx06.png?v=4',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel S/Cafeína',     detail:'Display 12 geles · Frutilla & Naranja', price:20200 },
       // ── GELES CON CAFEÍNA ──
-      { id:'NX07', image:'images/producto-nx07.png',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel C/Cafeína',     detail:'Display 12 geles · Caramelo Salado',price:20200 },
-      { id:'NX08', image:'images/producto-nx08.png',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel C/Cafeína',     detail:'Display 12 geles · Naranja',price:20200 },
-      { id:'NX09', image:'images/producto-nx09.png',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel C/Cafeína',     detail:'Display 12 geles · Tirberry',price:20200 },
+      { id:'NX07', image:'images/producto-nx07.png?v=4',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel C/Cafeína',     detail:'Display 12 geles · Caramelo Salado',price:20200 },
+      { id:'NX08', image:'images/producto-nx08.png?v=4',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel C/Cafeína',     detail:'Display 12 geles · Naranja',price:20200 },
+      { id:'NX09', image:'images/producto-nx09.png?v=4',cat:'Gel energizante',brand:'Nutremax', name:'Energy Gel C/Cafeína',     detail:'Display 12 geles · Tirberry',price:20200 },
       // ── ACCESORIOS ──
-      { id:'NX10', image:'images/producto-nx10.jpg',cat:'Accesorios',     brand:'Nutremax', name:'Shaker Cristal',           detail:'Mezclador',                 price:20000 },
-      { id:'NX11', image:'images/producto-nx11.webp',cat:'Accesorios',     brand:'Nutremax', name:'Shaker Negro',             detail:'Mezclador',                 price:20000 },
-      { id:'NX12', image:'images/producto-nx12.png',cat:'Accesorios',     brand:'Nutremax', name:'Shaker Rosa',              detail:'Mezclador',                 price:20000 },
+      { id:'NX10', image:'images/producto-nx10.jpg?v=4',cat:'Accesorios',     brand:'Nutremax', name:'Shaker Cristal',           detail:'Mezclador',                 price:20000 },
+      { id:'NX11', image:'images/producto-nx11.webp?v=4',cat:'Accesorios',     brand:'Nutremax', name:'Shaker Negro',             detail:'Mezclador',                 price:20000 },
+      { id:'NX12', image:'images/producto-nx12.png?v=4',cat:'Accesorios',     brand:'Nutremax', name:'Shaker Rosa',              detail:'Mezclador',                 price:20000 },
     ]
   }
 };
