@@ -160,6 +160,23 @@ padding:6px;
 transform:scale(1.04);
 transition:transform .25s ease;
 }
+.product-image-wrap.is-missing {
+flex-direction: column;
+gap: 12px;
+}
+.missing-mark {
+width: 42px;
+height: 42px;
+color: var(--gray);
+flex: none;
+}
+.missing-text {
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 1.6px;
+text-transform: uppercase;
+color: var(--gray2);
+}
 .product-promo {
 margin-top:8px; font-size:10px; line-height:1.35; font-weight:800;
 color:var(--blue); text-transform:uppercase; letter-spacing:.7px;
@@ -353,32 +370,32 @@ const catalog = {
     filters: ['Todos', 'Proteína', 'Creatina'],
     products: [
       // ── PROTEÍNAS STAR ──
-      { id:'P01', image:'imagenes-supply-final/star-whey-chocolate.jpeg', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Chocolate', detail:'2 LB · Doypack · Concentrada', price:76100 },
-      { id:'P02', image:'imagenes-supply-final/star-whey-vainilla.jpeg', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Vainilla', detail:'2 LB · Doypack · Concentrada', price:76100 },
-      { id:'P03', image:'imagenes-supply-final/star-whey-cookies.jpeg', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Cookies', detail:'2 LB · Doypack · Concentrada', price:76100 },
+      { id:'P01', image:'imagenes-supply-final/star-whey-chocolate.webp', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Chocolate', detail:'2 LB · Doypack · Concentrada', price:76100 },
+      { id:'P02', image:'imagenes-supply-final/star-whey-vainilla.webp', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Vainilla', detail:'2 LB · Doypack · Concentrada', price:76100 },
+      { id:'P03', image:'imagenes-supply-final/star-whey-cookies.webp', cat:'Proteína', brand:'Star Nutrition', name:'Whey Protein Cookies', detail:'2 LB · Doypack · Concentrada', price:76100 },
       // ── PROTEÍNAS ENA ──
-      { id:'P04', image:'imagenes-supply-final/ena-whey-chocolate.jpeg', cat:'Proteína', brand:'ENA', name:'True Made Chocolate', detail:'2.05 LB · Blend', price:80000 },
-      { id:'P05', image:'imagenes-supply-final/ena-whey-vainilla.jpeg', cat:'Proteína', brand:'ENA', name:'True Made Vainilla', detail:'2.05 LB · Blend', price:80000 },
-      { id:'P06', image:'imagenes-supply-final/ena-whey-cookies.jpeg', cat:'Proteína', brand:'ENA', name:'True Made Cookies', detail:'2.05 LB · Blend', price:80000 },
+      { id:'P04', image:'imagenes-supply-final/ena-whey-chocolate.webp', cat:'Proteína', brand:'ENA', name:'True Made Chocolate', detail:'2.05 LB · Blend', price:80000 },
+      { id:'P05', image:'imagenes-supply-final/ena-whey-vainilla.webp', cat:'Proteína', brand:'ENA', name:'True Made Vainilla', detail:'2.05 LB · Blend', price:80000 },
+      { id:'P06', image:'imagenes-supply-final/ena-whey-cookies.webp', cat:'Proteína', brand:'ENA', name:'True Made Cookies', detail:'2.05 LB · Blend', price:80000 },
       // ── PROTEÍNAS IDN DOYPACK ──
-      { id:'P07', image:'imagenes-supply-final/idn-whey-doypack-vainilla.jpg', cat:'Proteína', brand:'IDN', name:'100% Whey Protein Vainilla', detail:'2 LB · Doypack · WPC+WPH+WPI', price:69500 },
-      { id:'P08', image:'imagenes-supply-final/idn-whey-doypack-cookies.png', cat:'Proteína', brand:'IDN', name:'100% Whey Protein Cookies', detail:'2 LB · Doypack · WPC+WPH+WPI', price:69500 },
+      { id:'P07', image:'imagenes-supply-final/idn-whey-doypack-vainilla.webp', cat:'Proteína', brand:'IDN', name:'100% Whey Protein Vainilla', detail:'2 LB · Doypack · WPC+WPH+WPI', price:69500 },
+      { id:'P08', image:'imagenes-supply-final/idn-whey-doypack-cookies.webp', cat:'Proteína', brand:'IDN', name:'100% Whey Protein Cookies', detail:'2 LB · Doypack · WPC+WPH+WPI', price:69500 },
       // ── PROTEÍNAS IDN POTE ──
-      { id:'P09', image:'imagenes-supply-final/idn-whey-pote-vainilla.jpg', cat:'Proteína', brand:'IDN', name:'100% Whey Ice Cream Vainilla', detail:'2 LB · Pote · WPC+WPH+WPI', price:76900 },
-      { id:'P10', image:'imagenes-supply-final/idn-whey-pote-chocolate.jpg', cat:'Proteína', brand:'IDN', name:'100% Whey Chocolate', detail:'2 LB · Pote · WPC+WPH+WPI', price:76900 },
-      { id:'P11', image:'imagenes-supply-final/idn-whey-pote-frutilla.jpg', cat:'Proteína', brand:'IDN', name:'100% Whey Frutilla', detail:'2 LB · Pote · WPC+WPH+WPI', price:76900 },
+      { id:'P09', image:'imagenes-supply-final/idn-whey-pote-vainilla.webp', cat:'Proteína', brand:'IDN', name:'100% Whey Ice Cream Vainilla', detail:'2 LB · Pote · WPC+WPH+WPI', price:76900 },
+      { id:'P10', image:'imagenes-supply-final/idn-whey-pote-chocolate.webp', cat:'Proteína', brand:'IDN', name:'100% Whey Chocolate', detail:'2 LB · Pote · WPC+WPH+WPI', price:76900 },
+      { id:'P11', image:'imagenes-supply-final/idn-whey-pote-frutilla.webp', cat:'Proteína', brand:'IDN', name:'100% Whey Frutilla', detail:'2 LB · Pote · WPC+WPH+WPI', price:76900 },
       // ── CREATINAS STAR ──
-      { id:'CR01', image:'imagenes-supply-final/star-creatina-frutos-rojos.jpeg', cat:'Creatina', brand:'Star Nutrition', name:'Creatina Monohidrato', detail:'300 g · Frutos Rojos', price:29000 },
-      { id:'CR02', image:'imagenes-supply-final/star-creatina-neutra.jpeg', cat:'Creatina', brand:'Star Nutrition', name:'Creatina Monohidrato', detail:'300 g · Neutro', price:29000 },
+      { id:'CR01', image:'imagenes-supply-final/star-creatina-frutos-rojos.webp', cat:'Creatina', brand:'Star Nutrition', name:'Creatina Monohidrato', detail:'300 g · Frutos Rojos', price:29000 },
+      { id:'CR02', image:'imagenes-supply-final/star-creatina-neutra.webp', cat:'Creatina', brand:'Star Nutrition', name:'Creatina Monohidrato', detail:'300 g · Neutro', price:29000 },
       // ── CREATINAS ENA ──
-      { id:'CR03', image:'imagenes-supply-final/ena-creatina-fruit-punch.jpeg', cat:'Creatina', brand:'ENA', name:'Creatina Micronizada', detail:'300 g · Fruit Punch', price:32000 },
-      { id:'CR04', image:'imagenes-supply-final/ena-creatina-naranja.jpeg', cat:'Creatina', brand:'ENA', name:'Creatina Micronizada', detail:'300 g · Naranja', price:32000 },
-      { id:'CR05', image:'imagenes-supply-final/ena-creatina-neutra.jpeg', cat:'Creatina', brand:'ENA', name:'Creatina Micronizada', detail:'300 g · Neutro', price:32000 },
+      { id:'CR03', image:'imagenes-supply-final/ena-creatina-fruit-punch.webp', cat:'Creatina', brand:'ENA', name:'Creatina Micronizada', detail:'300 g · Fruit Punch', price:32000 },
+      { id:'CR04', image:'imagenes-supply-final/ena-creatina-naranja.webp', cat:'Creatina', brand:'ENA', name:'Creatina Micronizada', detail:'300 g · Naranja', price:32000 },
+      { id:'CR05', image:'imagenes-supply-final/ena-creatina-neutra.webp', cat:'Creatina', brand:'ENA', name:'Creatina Micronizada', detail:'300 g · Neutro', price:32000 },
       // ── CREATINAS IDN ──
-      { id:'CR06', image:'imagenes-supply-final/idn-creatina-300.png', cat:'Creatina', brand:'IDN', name:'Creatina Monohidrato', detail:'300 g · Neutro', price:28300 },
-      { id:'CR07', image:'imagenes-supply-final/idn-creatina-500.jpg', cat:'Creatina', brand:'IDN', name:'Creatina Monohidrato', detail:'500 g · Neutro', price:49000 },
+      { id:'CR06', image:'imagenes-supply-final/idn-creatina-300.webp', cat:'Creatina', brand:'IDN', name:'Creatina Monohidrato', detail:'300 g · Neutro', price:28300 },
+      { id:'CR07', image:'imagenes-supply-final/idn-creatina-500.webp', cat:'Creatina', brand:'IDN', name:'Creatina Monohidrato', detail:'500 g · Neutro', price:49000 },
       // ── CREATINA NATIER ──
-      { id:'NAT01', image:'imagenes-supply-final/natier-creatina.jpeg', cat:'Creatina', brand:'Natier', name:'Creatina Monohidratada', detail:'300 g · Neutro', price:35800, promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT01', image:'imagenes-supply-final/natier-creatina.webp', cat:'Creatina', brand:'Natier', name:'Creatina Monohidratada', detail:'300 g · Neutro', price:35800, promo:'10% OFF en efectivo o transferencia' },
     ]
   },
   wellness: {
@@ -386,19 +403,19 @@ const catalog = {
     filters: ['Todos', 'Colágeno', 'Magnesio', 'Omega 3', 'Vitaminas', 'Otros'],
     products: [
       // ── COLÁGENO ──
-      { id:'NAT02', image:'imagenes-supply-final/natier-colageno-magnesio.jpeg', cat:'Colágeno', brand:'Natier', name:'Colágeno + Magnesio Polvo', detail:'250 g · Polvo', price:42500, promo:'10% OFF en efectivo o transferencia' },
-      { id:'NAT03', image:'imagenes-supply-final/natier-colageno-beauty.jpeg', cat:'Colágeno', brand:'Natier', name:'Colágeno Beauty Plus', detail:'250 g · Polvo', price:40500, promo:'10% OFF en efectivo o transferencia' },
-      { id:'NX01', image:'imagenes-supply-final/nutremax-collagen-bd.png', cat:'Colágeno', brand:'Nutremax', name:'Collagen BD', detail:'Con minerales + vitaminas antioxidantes', price:29900 },
+      { id:'NAT02', image:'imagenes-supply-final/natier-colageno-magnesio.webp', cat:'Colágeno', brand:'Natier', name:'Colágeno + Magnesio Polvo', detail:'250 g · Polvo', price:42500, promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT03', image:'imagenes-supply-final/natier-colageno-beauty.webp', cat:'Colágeno', brand:'Natier', name:'Colágeno Beauty Plus', detail:'250 g · Polvo', price:40500, promo:'10% OFF en efectivo o transferencia' },
+      { id:'NX01', image:'imagenes-supply-final/nutremax-collagen-bd.webp', cat:'Colágeno', brand:'Nutremax', name:'Collagen BD', detail:'Con minerales + vitaminas antioxidantes', price:29900 },
       // ── MAGNESIO ──
-      { id:'NAT04', image:'imagenes-supply-final/natier-magnesio-polvo.jpeg', cat:'Magnesio', brand:'Natier', name:'Citrato de Magnesio', detail:'150 g · Polvo concentrado', price:36400, promo:'10% OFF en efectivo o transferencia' },
-      { id:'NAT05', image:'imagenes-supply-final/natier-magnesio-capsulas.jpeg', cat:'Magnesio', brand:'Natier', name:'Magnesio 50 caps', detail:'50 cápsulas', price:24300, promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT04', image:'imagenes-supply-final/natier-magnesio-polvo.webp', cat:'Magnesio', brand:'Natier', name:'Citrato de Magnesio', detail:'150 g · Polvo concentrado', price:36400, promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT05', image:'imagenes-supply-final/natier-magnesio-capsulas.webp', cat:'Magnesio', brand:'Natier', name:'Magnesio 50 caps', detail:'50 cápsulas', price:24300, promo:'10% OFF en efectivo o transferencia' },
       // ── OMEGA 3 ──
-      { id:'NAT07', image:'imagenes-supply-final/natier-omega-3.jpeg', cat:'Omega 3', brand:'Natier', name:'Omega-3 Softgel', detail:'60 cápsulas', price:50500, promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT07', image:'imagenes-supply-final/natier-omega-3.webp', cat:'Omega 3', brand:'Natier', name:'Omega-3 Softgel', detail:'60 cápsulas', price:50500, promo:'10% OFF en efectivo o transferencia' },
       // ── VITAMINAS ──
-      { id:'NAT10', image:'imagenes-supply-final/natier-vitamina-c.jpeg', cat:'Vitaminas', brand:'Natier', name:'Vitamina C Concentrada', detail:'50 cápsulas', price:25300, promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT10', image:'imagenes-supply-final/natier-vitamina-c.webp', cat:'Vitaminas', brand:'Natier', name:'Vitamina C Concentrada', detail:'50 cápsulas', price:25300, promo:'10% OFF en efectivo o transferencia' },
       // ── OTROS ──
-      { id:'NAT08', image:'imagenes-supply-final/natier-aloe-vera-500.jpeg', cat:'Otros', brand:'Natier', name:'Aloe Vera Jugo Natural', detail:'500 cc · 100% natural', price:21700, promo:'10% OFF en efectivo o transferencia' },
-      { id:'NAT09', image:'imagenes-supply-final/natier-shot-energia.jpeg', cat:'Otros', brand:'Natier', name:'Shot Energía', detail:'60 cm³', price:6000, promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT08', image:'imagenes-supply-final/natier-aloe-vera-500.webp', cat:'Otros', brand:'Natier', name:'Aloe Vera Jugo Natural', detail:'500 cc · 100% natural', price:21700, promo:'10% OFF en efectivo o transferencia' },
+      { id:'NAT09', image:'imagenes-supply-final/natier-shot-energia.webp', cat:'Otros', brand:'Natier', name:'Shot Energía', detail:'60 cm³', price:6000, promo:'10% OFF en efectivo o transferencia' },
     ]
   },
   endurance: {
@@ -406,20 +423,20 @@ const catalog = {
     filters: ['Todos', 'Isotónica', 'Gel energizante', 'Accesorios'],
     products: [
       // ── ISOTÓNICAS ──
-      { id:'NX02', image:'imagenes-supply-final/nutremax-hidromax.png', cat:'Isotónica', brand:'Nutremax', name:'Hidromax Pomelo Rosado', detail:'Display 20 sobres', price:20400 },
-      { id:'NX03', image:'imagenes-supply-final/nutremax-hidromax.png', cat:'Isotónica', brand:'Nutremax', name:'Hidromax Naranja', detail:'Display 20 sobres', price:20400 },
+      { id:'NX02', image:'imagenes-supply-final/nutremax-hidromax.webp', cat:'Isotónica', brand:'Nutremax', name:'Hidromax Pomelo Rosado', detail:'Display 20 sobres', price:20400 },
+      { id:'NX03', image:'imagenes-supply-final/nutremax-hidromax.webp', cat:'Isotónica', brand:'Nutremax', name:'Hidromax Naranja', detail:'Display 20 sobres', price:20400 },
       // ── GELES SIN CAFEÍNA ──
-      { id:'NX04', image:'imagenes-supply-final/nutremax-gel-sin-cafeina.png', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel S/Cafeína', detail:'Display 12 geles · Neutro', price:20200 },
-      { id:'NX05', image:'imagenes-supply-final/nutremax-gel-sin-cafeina.png', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel S/Cafeína', detail:'Display 12 geles · Limón', price:20200 },
-      { id:'NX06', image:'imagenes-supply-final/nutremax-gel-sin-cafeina.png', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel S/Cafeína', detail:'Display 12 geles · Frutilla & Naranja', price:20200 },
+      { id:'NX04', image:'imagenes-supply-final/nutremax-gel-sin-cafeina.webp', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel S/Cafeína', detail:'Display 12 geles · Neutro', price:20200 },
+      { id:'NX05', image:'imagenes-supply-final/nutremax-gel-sin-cafeina.webp', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel S/Cafeína', detail:'Display 12 geles · Limón', price:20200 },
+      { id:'NX06', image:'imagenes-supply-final/nutremax-gel-sin-cafeina.webp', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel S/Cafeína', detail:'Display 12 geles · Frutilla & Naranja', price:20200 },
       // ── GELES CON CAFEÍNA ──
-      { id:'NX07', image:'imagenes-supply-final/nutremax-gel-con-cafeina.png', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel C/Cafeína', detail:'Display 12 geles · Caramelo Salado', price:20200 },
-      { id:'NX08', image:'imagenes-supply-final/nutremax-gel-con-cafeina.png', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel C/Cafeína', detail:'Display 12 geles · Naranja', price:20200 },
-      { id:'NX09', image:'imagenes-supply-final/nutremax-gel-con-cafeina.png', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel C/Cafeína', detail:'Display 12 geles · Tirberry', price:20200 },
+      { id:'NX07', image:'imagenes-supply-final/nutremax-gel-con-cafeina.webp', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel C/Cafeína', detail:'Display 12 geles · Caramelo Salado', price:20200 },
+      { id:'NX08', image:'imagenes-supply-final/nutremax-gel-con-cafeina.webp', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel C/Cafeína', detail:'Display 12 geles · Naranja', price:20200 },
+      { id:'NX09', image:'imagenes-supply-final/nutremax-gel-con-cafeina.webp', cat:'Gel energizante', brand:'Nutremax', name:'Energy Gel C/Cafeína', detail:'Display 12 geles · Tirberry', price:20200 },
       // ── ACCESORIOS ──
-      { id:'NX10', image:'imagenes-supply-final/nutremax-shaker-cristal.jpg', cat:'Accesorios', brand:'Nutremax', name:'Shaker Cristal', detail:'Mezclador', price:20000 },
-      { id:'NX11', image:'imagenes-supply-final/nutremax-shaker-negro.jpeg', cat:'Accesorios', brand:'Nutremax', name:'Shaker Negro', detail:'Mezclador', price:20000 },
-      { id:'NX12', image:'imagenes-supply-final/nutremax-shaker-rosa.png', cat:'Accesorios', brand:'Nutremax', name:'Shaker Rosa', detail:'Mezclador', price:20000 },
+      { id:'NX10', image:'imagenes-supply-final/nutremax-shaker-cristal.webp', cat:'Accesorios', brand:'Nutremax', name:'Shaker Cristal', detail:'Mezclador', price:20000 },
+      { id:'NX11', image:'imagenes-supply-final/nutremax-shaker-negro.webp', cat:'Accesorios', brand:'Nutremax', name:'Shaker Negro', detail:'Mezclador', price:20000 },
+      { id:'NX12', image:'imagenes-supply-final/nutremax-shaker-rosa.webp', cat:'Accesorios', brand:'Nutremax', name:'Shaker Rosa', detail:'Mezclador', price:20000 },
     ]
   }
 };
@@ -512,7 +529,7 @@ function renderProducts() {
   document.getElementById('productsGrid').innerHTML = list.map((p, i) => `
     <div class="product-card" style="animation-delay:${Math.min(i*.04,.5)}s">
       <div class="product-image-wrap">
-        <img class="product-image" src="${p.image}" alt="${p.brand} ${p.name}" loading="lazy">
+        <img class="product-image" src="${p.image}" alt="${p.brand} ${p.name}" loading="lazy" onerror="imageFallback(this)">
       </div>
       <div class="product-top">
         <span class="product-cat">${p.cat}</span>
@@ -527,6 +544,20 @@ function renderProducts() {
       </div>
     </div>
   `).join('');
+}
+
+function imageFallback(img) {
+  const wrap = img.parentElement;
+  if (!wrap || wrap.classList.contains('is-missing')) return;
+  wrap.classList.add('is-missing');
+  wrap.innerHTML = `
+    <svg class="missing-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="4.5" y="7.5" width="15" height="13" rx="2.5"/>
+      <path d="M9 7.5V6a3 3 0 0 1 6 0v1.5"/>
+      <path d="M8.5 13.5h7"/>
+    </svg>
+    <span class="missing-text">Foto en camino</span>`;
 }
 
 function getAllProducts() {
