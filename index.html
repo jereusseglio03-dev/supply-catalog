@@ -78,14 +78,12 @@ padding: 9px 18px; font-family: 'Figtree', sans-serif;
 font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
 text-transform: uppercase; cursor: pointer; transition: background .2s;
 }
-.cart-btn:hover { background: var(--blue); }
 .cart-count {
 background: var(--blue); color: var(--white);
 min-width: 20px; height: 20px; border-radius: 10px;
 display: flex; align-items: center; justify-content: center;
 font-size: 11px; font-weight: 800; padding: 0 5px;
 }
-.cart-btn:hover .cart-count { background: var(--white); color: var(--blue); }
 /* ── HERO ── */
 .hero {
 margin-top: 58px;
@@ -116,7 +114,6 @@ letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
 color: var(--gray2); border-bottom: 2px solid transparent;
 margin-bottom: -1px; transition: all .18s; white-space: nowrap;
 }
-.section-tab:hover { color: var(--black); }
 .section-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
 /* ── BUSCADOR ── */
 .search-wrap {
@@ -134,14 +131,17 @@ box-shadow: 0 0 0 3px rgba(20,93,160,.08);
 .search-icon { color: var(--blue); font-size: 17px; flex-shrink: 0; }
 .search-input {
 width: 100%; border: none; outline: none; background: transparent;
-font-family: 'Figtree', sans-serif; font-size: 14px; color: var(--black);
+font-family: 'Figtree', sans-serif; color: var(--black);
+/* 16px es el minimo: por debajo, iOS hace zoom al enfocar el campo y no vuelve */
+font-size: 16px;
 }
 .search-input::placeholder { color: var(--gray2); }
 .clear-search {
 border: none; background: transparent; color: var(--gray2);
 font-size: 20px; cursor: pointer; line-height: 1; display: none;
+width: 44px; height: 44px; margin: -11px -12px -11px 0; flex-shrink: 0;
 }
-.clear-search.visible { display: block; }
+.clear-search.visible { display: flex; align-items: center; justify-content: center; }
 .no-results {
 grid-column: 1 / -1; background: var(--cream); text-align: center;
 padding: 70px 24px; color: var(--gray2); font-size: 14px; line-height: 1.7;
@@ -150,7 +150,6 @@ padding: 70px 24px; color: var(--gray2); font-size: 14px; line-height: 1.7;
 .filter-bar { max-width: 1100px; margin: 0 auto; padding: 20px 28px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .filter-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray2); font-weight: 700; margin-right: 4px; }
 .filter-btn { padding: 6px 16px; border: 1.5px solid var(--gray); background: transparent; font-family: 'Figtree', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; color: var(--black); transition: all .15s; }
-.filter-btn:hover { border-color: var(--blue); color: var(--blue); }
 .filter-btn.active { background: var(--blue); border-color: var(--blue); color: var(--white); }
 /* ── SECTION HEADER ── */
 .section-header { max-width: 1100px; margin: 0 auto; padding: 0 28px 16px; display: flex; align-items: baseline; justify-content: space-between; }
@@ -208,13 +207,6 @@ color: var(--gray2);
 margin-top:8px; font-size:10px; line-height:1.35; font-weight:800;
 color:var(--blue); text-transform:uppercase; letter-spacing:.7px;
 }
-.product-card:hover {
-background: var(--white);
-transform: translateY(-4px);
-box-shadow: 0 10px 24px rgba(17,17,17,.08);
-z-index: 2;
-}
-.product-card:hover .product-image { transform: scale(1.09); }
 @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 .product-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
 .product-cat { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: var(--white); background: var(--blue); padding: 3px 8px; }
@@ -223,12 +215,7 @@ z-index: 2;
 .product-detail { font-size: 12px; color: var(--gray2); font-weight: 400; }
 .product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--gray); }
 .product-price { font-size: 22px; font-weight: 900; color: var(--black); letter-spacing: -0.5px; }
-.add-btn { width: 34px; height: 34px; background: var(--black); color: var(--white); border: none; font-size: 20px; font-weight: 300; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s, transform .1s; line-height: 1; }
-.add-btn:hover {
-background: var(--blue);
-transform: translateY(-2px) scale(1.06);
-box-shadow: 0 5px 12px rgba(20,93,160,.22);
-}
+.add-btn { width: 44px; height: 44px; background: var(--black); color: var(--white); border: none; font-size: 22px; font-weight: 300; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s, transform .1s; line-height: 1; }
 .add-btn.added { background: var(--blue); font-size: 14px; }
 /* ── BAND ── */
 .band { background: var(--blue); padding: 18px 28px; }
@@ -244,20 +231,22 @@ footer { background: var(--black); padding: 48px 28px 32px; border-top: 1.5px so
 .footer-links-title { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: #444; font-weight: 700; margin-bottom: 14px; }
 .footer-links { display: flex; flex-direction: column; gap: 10px; }
 .footer-links a { font-size: 13px; color: #777; text-decoration: none; transition: color .15s; }
-.footer-links a:hover { color: var(--blue); }
 .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid #1a1a1a; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
 .footer-copy { font-size: 11px; color: #333; }
 .footer-loc { font-size: 11px; color: #333; letter-spacing: 1px; text-transform: uppercase; }
 /* ── CART ── */
 .cart-overlay { position: fixed; inset: 0; background: rgba(17,17,17,.55); z-index: 200; opacity: 0; pointer-events: none; transition: opacity .3s; backdrop-filter: blur(3px); }
 .cart-overlay.open { opacity:1; pointer-events:all; }
-.cart-drawer { position: fixed; top:0; right:0; bottom:0; width: min(400px, 100vw); background: var(--cream); z-index: 201; transform: translateX(100%); transition: transform .32s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; border-left: 1px solid var(--gray); }
+/* el calc() deja una franja de overlay tocable: sin eso, en mobile el drawer
+   ocupa el 100% del ancho y no hay forma de cerrarlo tocando afuera */
+.cart-drawer { position: fixed; top:0; right:0; bottom:0; width: min(400px, calc(100vw - 56px)); background: var(--cream); z-index: 201; transform: translateX(100%); transition: transform .32s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; border-left: 1px solid var(--gray); }
 .cart-drawer.open { transform: translateX(0); }
 .cart-header { padding: 18px 24px; border-bottom: 1px solid var(--gray); display: flex; align-items: center; justify-content: space-between; }
 .cart-title { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--black); }
-.close-btn { background: none; border: none; font-size: 26px; cursor: pointer; color: var(--black); line-height: 1; opacity: .4; transition: opacity .2s; }
-.close-btn:hover { opacity: 1; }
-.cart-items { flex:1; overflow-y:auto; padding: 8px 24px; }
+.close-btn { background: none; border: none; font-size: 26px; cursor: pointer; color: var(--black); line-height: 1; opacity: .4; transition: opacity .2s; width: 44px; height: 44px; margin: -9px -12px -9px 0; display: flex; align-items: center; justify-content: center; }
+/* overscroll-behavior corta el scroll chaining: sin esto el catalogo de atras
+   se mueve al scrollear el carrito y al cerrarlo aparece en otro lado */
+.cart-items { flex:1; overflow-y:auto; overscroll-behavior: contain; padding: 8px 24px; }
 .cart-item { padding: 14px 0; border-bottom: 1px solid var(--gray); display: flex; align-items: flex-start; gap: 12px; }
 .cart-item-info { flex:1; min-width:0; }
 .cart-item-brand { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray2); font-weight: 700; margin-bottom: 3px; }
@@ -265,10 +254,10 @@ footer { background: var(--black); padding: 48px 28px 32px; border-top: 1.5px so
 .cart-item-detail { font-size: 11px; color: var(--gray2); margin-top: 2px; }
 .cart-item-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
 .cart-item-price { font-size: 15px; font-weight: 900; color: var(--black); }
-.qty-control { display: flex; align-items: center; gap: 10px; border: 1.5px solid var(--gray); padding: 3px 10px; }
-.qty-btn { background: none; border: none; font-size: 16px; cursor: pointer; color: var(--black); font-weight: 700; line-height: 1; padding: 0; transition: color .15s; }
-.qty-btn:hover { color: var(--blue); }
-.qty-num { font-size: 13px; font-weight: 700; min-width: 16px; text-align: center; }
+.qty-control { display: flex; align-items: center; border: 1.5px solid var(--gray); }
+.qty-btn { background: none; border: none; font-size: 18px; cursor: pointer; color: var(--black); font-weight: 700; line-height: 1; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; transition: color .15s; }
+.qty-num { font-size: 14px; font-weight: 700; min-width: 24px; text-align: center; }
+.remove-btn { background: none; border: none; cursor: pointer; font-family: 'Figtree', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray2); min-height: 44px; padding: 0 4px; transition: color .15s; }
 .cart-empty { text-align: center; padding: 60px 20px; color: var(--gray2); font-size: 14px; font-weight: 300; line-height: 1.7; font-style: italic; }
 .cart-footer { padding: 18px 24px 24px; border-top: 1.5px solid var(--blue); }
 .cart-total { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
@@ -276,19 +265,67 @@ footer { background: var(--black); padding: 48px 28px 32px; border-top: 1.5px so
 .cart-total-amount { font-size: 28px; font-weight: 900; color: var(--black); }
 .cart-note { font-size: 11px; color: var(--gray2); margin-bottom: 14px; font-style: italic; }
 .whatsapp-btn { width: 100%; background: #25D366; color: var(--white); border: none; padding: 15px; font-family: 'Figtree', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background .2s; }
-.whatsapp-btn:hover { background: #1da851; }
 .whatsapp-btn:disabled { background: var(--gray); cursor: not-allowed; }
 .whatsapp-btn svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
+/* ── HOVER ──
+   Todos los :hover viven aca. En touch no existe el hover real: el navegador
+   lo simula al tocar y lo deja PEGADO hasta que tocas otra cosa. Resultado:
+   el boton queda azul y levantado como si siguiera presionado.
+   Con (hover:hover) and (pointer:fine) estos estilos solo llegan a mouse. */
+@media (hover: hover) and (pointer: fine) {
+  .cart-btn:hover { background: var(--blue); }
+  .cart-btn:hover .cart-count { background: var(--white); color: var(--blue); }
+  .section-tab:hover { color: var(--black); }
+  .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+  .product-card:hover {
+    background: var(--white);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(17,17,17,.08);
+    z-index: 2;
+  }
+  .product-card:hover .product-image { transform: scale(1.09); }
+  .add-btn:hover {
+    background: var(--blue);
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 5px 12px rgba(20,93,160,.22);
+  }
+  .footer-links a:hover { color: var(--blue); }
+  .close-btn:hover { opacity: 1; }
+  .qty-btn:hover { color: var(--blue); }
+  .remove-btn:hover { color: var(--black); }
+  .whatsapp-btn:hover { background: #1da851; }
+}
+/* En touch el feedback lo da :active, que si se limpia al soltar */
+.add-btn:active, .cart-btn:active { background: var(--blue); }
+.filter-btn:active { border-color: var(--blue); color: var(--blue); }
+
 @media (max-width: 600px) {
-.products-grid { grid-template-columns: 1fr 1fr; }
+/* minmax(0,1fr) y no 1fr: el minimo por defecto de una pista es min-content,
+   asi que el nombre largo de un producto ensancha la columna y desborda la pagina */
+.products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.product-name, .product-detail, .cart-item-name { overflow-wrap: anywhere; }
 .product-card { padding: 16px 14px; }
 .product-image-wrap { height:165px; }
 .product-image { padding:4px; transform:scale(1.03); }
-.product-card:hover { transform:none; box-shadow:none; }
-.product-card:hover .product-image { transform:scale(1.03); }
 .hero { padding: 48px 20px 40px; }
+.footer-links { gap: 0; }
+.footer-links a { padding: 15px 0; display: inline-block; }
+.filter-btn { padding: 15px 16px; }
+.band-cta { padding: 15px 0; display: inline-block; }
+.cart-btn { min-height: 44px; }
+.logo { padding: 9px 0; display: inline-block; }
 }
-@media (max-width: 380px) { .products-grid { grid-template-columns: 1fr; } }
+/* A 360px o menos el header no entra: el boton del carrito se sale 23px
+   y como el header es fixed, esos pixeles no se pueden alcanzar ni scrolleando */
+@media (max-width: 360px) {
+header { padding: 0 14px; }
+.header-brand { display: none; }
+.header-right { margin-left: 0; }
+.cart-btn { padding: 9px 12px; letter-spacing: 1px; }
+.section-nav { padding: 28px 14px 0; }
+.section-tab { padding: 14px 16px; }
+.hero-title { font-size: clamp(38px,11vw,84px); }
+}
 </style>
 </head>
 <body>
@@ -614,6 +651,11 @@ function changeQty(id, delta) {
   updateCartUI();
 }
 
+function removeItem(id) {
+  cart = cart.filter(x => x.id !== id);
+  updateCartUI();
+}
+
 function updateCartUI() {
   const count = cart.reduce((s,i) => s + i.qty, 0);
   const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
@@ -637,18 +679,34 @@ function updateCartUI() {
       <div class="cart-item-right">
         <span class="cart-item-price">${fmt(i.price * i.qty)}</span>
         <div class="qty-control">
-          <button class="qty-btn" onclick="changeQty('${i.id}',-1)">−</button>
+          <button class="qty-btn" onclick="changeQty('${i.id}',-1)" aria-label="Quitar uno">−</button>
           <span class="qty-num">${i.qty}</span>
-          <button class="qty-btn" onclick="changeQty('${i.id}',1)">+</button>
+          <button class="qty-btn" onclick="changeQty('${i.id}',1)" aria-label="Agregar uno">+</button>
         </div>
+        <button class="remove-btn" onclick="removeItem('${i.id}')" aria-label="Eliminar ${i.name} del carrito">Eliminar</button>
       </div>
     </div>
   `).join('');
 }
 
+let scrollLockY = 0;
+
 function toggleCart() {
-  document.getElementById('cartDrawer').classList.toggle('open');
+  const open = document.getElementById('cartDrawer').classList.toggle('open');
   document.getElementById('cartOverlay').classList.toggle('open');
+  // Sin esto el catalogo de atras sigue scrolleando con el drawer abierto y,
+  // como en mobile el drawer lo tapa, al cerrar aparece en otro lugar.
+  if (open) {
+    scrollLockY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollLockY}px`;
+    document.body.style.width = '100%';
+  } else {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollLockY);
+  }
 }
 
 function sendToWhatsApp() {
