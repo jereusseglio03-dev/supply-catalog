@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# Bloquea el commit si hay imagenes rotas, vacias o faltantes.
+# Se activa con:  git config core.hooksPath scripts/hooks
+#
+# Para saltearlo puntualmente:  git commit --no-verify
+
+python3 "$(git rev-parse --show-toplevel)/scripts/check-imagenes.py" || {
+	echo "Commit bloqueado. Arregla las imagenes o usa: git commit --no-verify"
+	exit 1
+}
