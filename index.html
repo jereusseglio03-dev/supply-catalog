@@ -33,6 +33,10 @@
 <meta name="twitter:image" content="https://supply-catalog-blue.vercel.app/og-image.jpg">
 
 <!-- SUPPLY catálogo FINAL - imágenes por ID -->
+<!-- preconnect: son dos origenes en cadena (googleapis -> gstatic). Sin esto,
+     el DNS + TLS de cada uno se resuelve recien al pedir la fuente. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -41,7 +45,7 @@
 --black: #111111;
 --white: #ffffff;
 --gray: #e2e3de;
---gray2: #9ca3a0;
+--gray2: #6d726d;   /* 4.56:1 sobre el cream. El anterior (#9ca3a0) daba 2.39 y WCAG AA pide 4.5 */
 --text: #222222;
 }
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -106,7 +110,18 @@ display: flex; align-items: center; gap: 10px;
 max-width: 1100px; margin: 0 auto;
 padding: 28px 28px 0; display: flex; gap: 0;
 border-bottom: 1px solid var(--gray); overflow-x: auto;
+scrollbar-width: none;
+/* Sombras de scroll: las capas "local" viajan con el contenido y tapan a las
+   "scroll", que estan fijas al contenedor. Resultado: la sombra solo aparece
+   del lado donde hay contenido oculto. A 320px "Endurance" quedaba invisible
+   y sin ninguna pista de que habia mas para el costado. */
+background:
+  linear-gradient(to right, var(--cream) 40%, rgba(246,247,242,0)) left / 32px 100% no-repeat local,
+  linear-gradient(to left,  var(--cream) 40%, rgba(246,247,242,0)) right / 32px 100% no-repeat local,
+  radial-gradient(farthest-side at 0 50%, rgba(17,17,17,.16), rgba(17,17,17,0)) left / 12px 100% no-repeat scroll,
+  radial-gradient(farthest-side at 100% 50%, rgba(17,17,17,.16), rgba(17,17,17,0)) right / 12px 100% no-repeat scroll;
 }
+.section-nav::-webkit-scrollbar { display: none; }
 .section-tab {
 padding: 14px 28px; background: transparent; border: none;
 font-family: 'Figtree', sans-serif; font-size: 12px; font-weight: 700;
@@ -227,13 +242,15 @@ footer { background: var(--black); padding: 48px 28px 32px; border-top: 1.5px so
 .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 36px; align-items: start; }
 @media (max-width: 560px) { .footer-inner { grid-template-columns: 1fr; } }
 .footer-logo { font-size: 28px; font-weight: 900; font-style: italic; color: var(--white); margin-bottom: 8px; }
-.footer-slogan { font-size: 12px; color: #555; font-weight: 300; }
-.footer-links-title { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: #444; font-weight: 700; margin-bottom: 14px; }
+/* Los grises del footer estaban entre 1.49:1 y 4.22:1 sobre el negro.
+   Ahora todos pasan 4.5:1 conservando la jerarquia. */
+.footer-slogan { font-size: 12px; color: #7c7c7c; font-weight: 300; }
+.footer-links-title { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: #7c7c7c; font-weight: 700; margin-bottom: 14px; }
 .footer-links { display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { font-size: 13px; color: #777; text-decoration: none; transition: color .15s; }
+.footer-links a { font-size: 13px; color: #9a9a9a; text-decoration: none; transition: color .15s; }
 .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid #1a1a1a; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-.footer-copy { font-size: 11px; color: #333; }
-.footer-loc { font-size: 11px; color: #333; letter-spacing: 1px; text-transform: uppercase; }
+.footer-copy { font-size: 11px; color: #7c7c7c; }
+.footer-loc { font-size: 11px; color: #7c7c7c; letter-spacing: 1px; text-transform: uppercase; }
 /* ── CART ── */
 .cart-overlay { position: fixed; inset: 0; background: rgba(17,17,17,.55); z-index: 200; opacity: 0; pointer-events: none; transition: opacity .3s; backdrop-filter: blur(3px); }
 .cart-overlay.open { opacity:1; pointer-events:all; }
